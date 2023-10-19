@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="5.x-dev@d6186ec32a201556219ebd0155d1025001ac7aac">
+  <file src="src/PluginManager.php">
+    <MethodSignatureMismatch>
+      <code>PluginManager</code>
+    </MethodSignatureMismatch>
+  </file>
+  <file src="src/TemplateRenderer.php">
+    <MoreSpecificImplementedParamType>
+      <code>$name</code>
+      <code>$params</code>
+    </MoreSpecificImplementedParamType>
+  </file>
+</files>
