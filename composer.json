@@ -1,6 +1,6 @@
 {
     "name": "gsteel/looker-mezzio",
-    "type": "project",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
