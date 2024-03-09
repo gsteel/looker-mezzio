@@ -21,7 +21,7 @@
         "php": "~8.2 || ~8.3",
         "gsteel/dot": "^1.7",
         "gsteel/looker": "1.0.x-dev",
-        "laminas/laminas-servicemanager": "^3.22.0",
+        "laminas/laminas-servicemanager": "^3.22.0 || ^4.0.0",
         "mezzio/mezzio-helpers": "^5.15",
         "mezzio/mezzio-template": "^2.8",
         "psr/container": "^1.1.2 || ^2.0",
