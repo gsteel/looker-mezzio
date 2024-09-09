@@ -244,7 +244,7 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/gsteel/looker/tree/0.1.x",
+                "source": "https://github.com/gsteel/looker/tree/1.0.x",
                 "issues": "https://github.com/gsteel/looker/issues"
             },
             "time": "2024-08-26T00:06:37+00:00"
