@@ -5,6 +5,9 @@ on:
     types:
       - "closed"
 
+env:
+  GITHUB_TOKEN: ${{ secrets.ORGANIZATION_ADMIN_TOKEN }}
+
 jobs:
   release:
     uses: laminas/workflow-automatic-releases/.github/workflows/release-on-milestone-closed.yml@1.x
