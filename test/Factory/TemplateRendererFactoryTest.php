@@ -12,7 +12,7 @@ use Looker\Renderer\Renderer;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-class TemplateRendererFactoryTest extends TestCase
+final class TemplateRendererFactoryTest extends TestCase
 {
     /** @return array<string, array{0: array<string, mixed>}> */
     public static function configProvider(): array
