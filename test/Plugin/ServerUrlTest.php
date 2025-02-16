@@ -8,7 +8,7 @@ use Looker\Mezzio\Plugin\ServerUrl;
 use Mezzio\Helper\ServerUrlHelper;
 use PHPUnit\Framework\TestCase;
 
-class ServerUrlTest extends TestCase
+final class ServerUrlTest extends TestCase
 {
     public function testThatParametersWillBePassedToTheUnderlyingHelper(): void
     {

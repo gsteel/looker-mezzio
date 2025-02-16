@@ -8,7 +8,7 @@ use Looker\Mezzio\Plugin\Url;
 use Mezzio\Helper\UrlHelperInterface;
 use PHPUnit\Framework\TestCase;
 
-class UrlTest extends TestCase
+final class UrlTest extends TestCase
 {
     public function testThatParametersArePassedToTheComposedUrlHelper(): void
     {

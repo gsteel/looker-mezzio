@@ -10,7 +10,7 @@ use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Throwable;
 
-class ResolverFactoryTest extends TestCase
+final class ResolverFactoryTest extends TestCase
 {
     /** @return array<string, array{0: array<string, mixed>}> */
     public static function invalidConfigProvider(): array

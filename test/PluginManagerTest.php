@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\Assert;
 
 /** @psalm-import-type ServiceManagerConfiguration from ServiceManager */
-class PluginManagerTest extends TestCase
+final class PluginManagerTest extends TestCase
 {
     private PluginManager $pluginManager;
     private ServiceManager $container;

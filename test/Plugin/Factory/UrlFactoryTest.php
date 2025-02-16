@@ -10,7 +10,7 @@ use Mezzio\Helper\UrlHelperInterface;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-class UrlFactoryTest extends TestCase
+final class UrlFactoryTest extends TestCase
 {
     public function testFactory(): void
     {

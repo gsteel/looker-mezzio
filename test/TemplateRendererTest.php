@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
 
 use function basename;
 
-class TemplateRendererTest extends TestCase
+final class TemplateRendererTest extends TestCase
 {
     private TemplateRenderer $renderer;
 
