@@ -13,6 +13,7 @@ use Looker\Mezzio\ConfigProvider as LookerMezzioProvider;
 use Looker\Mezzio\PluginManager;
 use Looker\PluginManager as PluginManagerInterface;
 use Looker\Renderer\PluginProxy;
+use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Webmozart\Assert\Assert;
@@ -23,6 +24,7 @@ final class PluginManagerTest extends TestCase
     private PluginManager $pluginManager;
     private ServiceManager $container;
 
+    #[Override]
     protected function setUp(): void
     {
         $aggregator = new ConfigAggregator([

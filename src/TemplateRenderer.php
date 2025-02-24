@@ -11,6 +11,7 @@ use Looker\Plugin\Layout;
 use Looker\PluginManager;
 use Looker\Renderer\Renderer;
 use Mezzio\Template\TemplateRendererInterface;
+use Override;
 
 use function is_string;
 
@@ -34,6 +35,7 @@ final readonly class TemplateRenderer implements TemplateRendererInterface
      * @param non-empty-string                         $name
      * @param array<non-empty-string, mixed>|ViewModel $params
      */
+    #[Override]
     public function render(string $name, $params = []): string
     {
         $viewModel = $params instanceof ViewModel
@@ -86,18 +88,21 @@ final readonly class TemplateRenderer implements TemplateRendererInterface
     }
 
     /** @throws UnsupportedFeature */
+    #[Override]
     public function addPath(string $path, string|null $namespace = null): never
     {
         throw UnsupportedFeature::templatePathsCannotBeModifiedAtRuntime($path);
     }
 
     /** @throws UnsupportedFeature */
+    #[Override]
     public function getPaths(): never
     {
         throw UnsupportedFeature::retrievalOfConfiguredPaths();
     }
 
     /** @throws UnsupportedFeature */
+    #[Override]
     public function addDefaultParam(string $templateName, string $param, mixed $value): never
     {
         throw UnsupportedFeature::defaultParametersAreNotSupported();
