@@ -11,6 +11,7 @@ use Looker\Plugin\Layout;
 use Looker\Renderer\PhpRenderer;
 use Looker\Renderer\PluginProxy;
 use Looker\Template\DirectoryResolver;
+use Override;
 use PHPUnit\Framework\TestCase;
 
 use function basename;
@@ -19,6 +20,7 @@ final class TemplateRendererTest extends TestCase
 {
     private TemplateRenderer $renderer;
 
+    #[Override]
     protected function setUp(): void
     {
         $container    = new InMemoryContainer();
