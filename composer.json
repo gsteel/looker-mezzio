@@ -28,7 +28,7 @@
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
-        "doctrine/coding-standard": "^12.0",
+        "doctrine/coding-standard": "^13.0.0",
         "laminas/laminas-config-aggregator": "^1.18.0",
         "phpunit/phpunit": "^12.0.10",
         "psalm/plugin-phpunit": "^0.19.3",
