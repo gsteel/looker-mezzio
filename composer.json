@@ -30,7 +30,7 @@
     "require-dev": {
         "doctrine/coding-standard": "^14.0.0",
         "laminas/laminas-config-aggregator": "^1.19.0",
-        "phpunit/phpunit": "^12.4.3",
+        "phpunit/phpunit": "^12.4.4",
         "psalm/plugin-phpunit": "^0.19.5",
         "squizlabs/php_codesniffer": "^4.0.1",
         "vimeo/psalm": "^6.13.1"
