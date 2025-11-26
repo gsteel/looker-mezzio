@@ -20,10 +20,10 @@
     "require": {
         "php": "~8.3 || ~8.4 || ~8.5",
         "gsteel/dot": "^1.7",
-        "gsteel/looker": "^0",
+        "gsteel/looker": "^0.6",
         "laminas/laminas-servicemanager": "^3.23.0 || ^4.0",
         "mezzio/mezzio-helpers": "^5.15",
-        "mezzio/mezzio-template": "^2.11 || ^3.0",
+        "mezzio/mezzio-template": "^3.0",
         "psr/container": "^1.1.2 || ^2.0",
         "webmozart/assert": "^1.11"
     },

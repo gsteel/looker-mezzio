@@ -32,11 +32,11 @@ final readonly class TemplateRenderer implements TemplateRendererInterface
     /**
      * phpcs:disable SlevomatCodingStandard.TypeHints.ParameterTypeHint.MissingNativeTypeHint
      *
-     * @param non-empty-string                         $name
-     * @param array<non-empty-string, mixed>|ViewModel $params
+     * @param non-empty-string            $name
+     * @param array<string, mixed>|object $params
      */
     #[Override]
-    public function render(string $name, $params = []): string
+    public function render(string $name, array|object $params = []): string
     {
         $viewModel = $params instanceof ViewModel
             ? $params
@@ -85,20 +85,6 @@ final readonly class TemplateRenderer implements TemplateRendererInterface
         }
 
         return $this->defaultLayout;
-    }
-
-    /** @throws UnsupportedFeature */
-    #[Override]
-    public function addPath(string $path, string|null $namespace = null): never
-    {
-        throw UnsupportedFeature::templatePathsCannotBeModifiedAtRuntime($path);
-    }
-
-    /** @throws UnsupportedFeature */
-    #[Override]
-    public function getPaths(): never
-    {
-        throw UnsupportedFeature::retrievalOfConfiguredPaths();
     }
 
     /** @throws UnsupportedFeature */
