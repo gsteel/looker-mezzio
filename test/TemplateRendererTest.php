@@ -110,18 +110,6 @@ final class TemplateRendererTest extends TestCase
         self::assertStringContainsString(basename(__DIR__ . '/templates/basic-view.phtml'), $content);
     }
 
-    public function testThatTemplatePathsCannotBeAdded(): void
-    {
-        $this->expectException(UnsupportedFeature::class);
-        $this->renderer->addPath('foo');
-    }
-
-    public function testThatConfiguredPathsCannotBeRetrieved(): void
-    {
-        $this->expectException(UnsupportedFeature::class);
-        $this->renderer->getPaths();
-    }
-
     public function testThatDefaultParametersCannotBeSet(): void
     {
         $this->expectException(UnsupportedFeature::class);

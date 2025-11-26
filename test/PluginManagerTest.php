@@ -36,7 +36,9 @@ final class PluginManagerTest extends TestCase
         self::assertIsArray($config['dependencies']);
         $config['dependencies']['services'] = ['config' => $config];
 
-        $this->container = new ServiceManager($config['dependencies']);
+        /** @psalm-var ServiceManagerConfiguration $dependencies */
+        $dependencies    = $config['dependencies'];
+        $this->container = new ServiceManager($dependencies);
         /** @psalm-var ServiceManagerConfiguration $pluginConfig */
         $pluginConfig        = Dot::array('looker.plugins', $config);
         $this->pluginManager = new PluginManager($this->container, $pluginConfig);
