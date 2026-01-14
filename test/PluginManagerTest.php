@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Looker\Mezzio\Test;
 
 use Generator;
-use GSteel\Dot;
 use Laminas\ConfigAggregator\ConfigAggregator;
+use Laminas\ServiceManager\Exception\InvalidServiceException;
 use Laminas\ServiceManager\ServiceManager;
 use Looker\ConfigProvider as LookerConfigProvider;
 use Looker\Mezzio\ConfigProvider as LookerMezzioProvider;
@@ -16,7 +16,12 @@ use Looker\Renderer\PluginProxy;
 use Override;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
-use Webmozart\Assert\Assert;
+
+use function class_exists;
+use function Psl\Type\dict;
+use function Psl\Type\mixed_dict;
+use function Psl\Type\non_empty_string;
+use function Psl\Type\shape;
 
 /** @psalm-import-type ServiceManagerConfiguration from ServiceManager */
 final class PluginManagerTest extends TestCase
@@ -39,21 +44,31 @@ final class PluginManagerTest extends TestCase
         /** @psalm-var ServiceManagerConfiguration $dependencies */
         $dependencies    = $config['dependencies'];
         $this->container = new ServiceManager($dependencies);
+        $config          = shape([
+            'looker' => shape([
+                'plugins' => mixed_dict(),
+            ], true),
+        ], true)->assert($config);
+
         /** @psalm-var ServiceManagerConfiguration $pluginConfig */
-        $pluginConfig        = Dot::array('looker.plugins', $config);
+        $pluginConfig = $config['looker']['plugins'];
+
         $this->pluginManager = new PluginManager($this->container, $pluginConfig);
     }
 
     /** @return Generator<string, array{0: string, 1: class-string}> */
     public static function standardAliases(): Generator
     {
-        $config  = (new LookerConfigProvider())();
-        $plugins = Dot::array('looker.plugins.aliases', $config);
+        $config = shape([
+            'looker' => shape([
+                'plugins' => shape([
+                    'aliases' => dict(non_empty_string(), non_empty_string()),
+                ], true),
+            ], true),
+        ], true)->assert((new LookerConfigProvider())->__invoke());
 
-        foreach ($plugins as $alias => $expectedClass) {
-            self::assertIsString($alias);
-            self::assertIsString($expectedClass);
-            Assert::classExists($expectedClass);
+        foreach ($config['looker']['plugins']['aliases'] as $alias => $expectedClass) {
+            self::assertTrue(class_exists($expectedClass));
 
             yield $alias => [$alias, $expectedClass];
         }
@@ -90,5 +105,19 @@ final class PluginManagerTest extends TestCase
     ): void {
         $manager = $this->container->get(PluginManagerInterface::class);
         self::assertInstanceOf($expectedType, $manager->get($alias));
+    }
+
+    public function testPluginManagerValidatesPlugins(): void
+    {
+        $manager = new PluginManager(new ServiceManager(), [
+            'factories' => [
+                'foo' => static fn (): string => 'bar',
+            ],
+        ]);
+
+        $this->expectException(InvalidServiceException::class);
+        $this->expectExceptionMessage('The given service is not callable. Received string');
+
+        $manager->get('foo');
     }
 }
