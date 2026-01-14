@@ -113,6 +113,11 @@ final class TemplateRendererTest extends TestCase
     public function testThatDefaultParametersCannotBeSet(): void
     {
         $this->expectException(UnsupportedFeature::class);
+        $this->expectExceptionMessage(
+            'Default template parameters are not supported because they might change per-request, and are '
+            . 'therefore mutable state.',
+        );
+
         $this->renderer->addDefaultParam('foo', 'bar', 'baz');
     }
 }

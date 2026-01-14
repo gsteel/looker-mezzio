@@ -4,26 +4,34 @@ declare(strict_types=1);
 
 namespace Looker\Mezzio\Factory;
 
-use GSteel\Dot;
 use Looker\Mezzio\TemplateRenderer;
 use Looker\PluginManager;
 use Looker\Renderer\Renderer;
 use Psr\Container\ContainerInterface;
-use Webmozart\Assert\Assert;
+
+use function Psl\Type\non_empty_string;
+use function Psl\Type\null;
+use function Psl\Type\optional;
+use function Psl\Type\shape;
+use function Psl\Type\union;
 
 final class TemplateRendererFactory
 {
     public function __invoke(ContainerInterface $container): TemplateRenderer
     {
-        $config = $container->has('config')
-            ? $container->get('config')
-            : [];
-        Assert::isArray($config);
+        $config = shape([
+            'templates' => optional(shape([
+                'layout' => optional(union(non_empty_string(), null())),
+                'layoutCapturesTo' => optional(union(non_empty_string(), null())),
+            ], true)),
+        ], true)->assert(
+            $container->has('config')
+                ? $container->get('config')
+                : [],
+        );
 
-        $defaultLayout = Dot::stringOrNull('templates.layout', $config);
-        $captureTo     = Dot::stringDefault('templates.layoutCapturesTo', $config, 'content');
-        Assert::nullOrStringNotEmpty($defaultLayout);
-        Assert::stringNotEmpty($captureTo);
+        $defaultLayout = $config['templates']['layout'] ?? null;
+        $captureTo     = $config['templates']['layoutCapturesTo'] ?? 'content';
 
         return new TemplateRenderer(
             $container->get(Renderer::class),
