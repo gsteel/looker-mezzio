@@ -51,8 +51,8 @@ final class TemplateRendererFactoryTest extends TestCase
     public function testValidConfig(array $config): void
     {
         $container = new InMemoryContainer($config);
-        $container->setService(Renderer::class, $this->createMock(Renderer::class));
-        $container->setService(PluginManager::class, $this->createMock(PluginManager::class));
+        $container->setService(Renderer::class, self::createStub(Renderer::class));
+        $container->setService(PluginManager::class, self::createStub(PluginManager::class));
 
         self::assertInstanceOf(TemplateRenderer::class, (new TemplateRendererFactory())($container));
     }
