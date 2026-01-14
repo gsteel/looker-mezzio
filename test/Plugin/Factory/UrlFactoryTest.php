@@ -18,7 +18,7 @@ final class UrlFactoryTest extends TestCase
         $container->expects(self::once())
             ->method('get')
             ->with(UrlHelperInterface::class)
-            ->willReturn($this->createMock(UrlHelperInterface::class));
+            ->willReturn(self::createStub(UrlHelperInterface::class));
 
         $plugin = (new UrlFactory())($container);
         self::assertInstanceOf(Url::class, $plugin);

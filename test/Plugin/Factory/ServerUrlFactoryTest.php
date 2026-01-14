@@ -18,7 +18,7 @@ final class ServerUrlFactoryTest extends TestCase
         $container->expects(self::once())
             ->method('get')
             ->with(ServerUrlHelper::class)
-            ->willReturn($this->createMock(ServerUrlHelper::class));
+            ->willReturn(self::createStub(ServerUrlHelper::class));
 
         $plugin = (new ServerUrlFactory())($container);
         self::assertInstanceOf(ServerUrl::class, $plugin);
