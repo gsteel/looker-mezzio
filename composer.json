@@ -33,7 +33,7 @@
         "php-standard-library/psalm-plugin": "^2.4",
         "phpunit/phpunit": "^13.1.13",
         "psalm/plugin-phpunit": "^0.19.7",
-        "squizlabs/php_codesniffer": "^4.0.1",
+        "squizlabs/php_codesniffer": "^4.0.2",
         "vimeo/psalm": "^6.16.1"
     },
     "autoload": {
