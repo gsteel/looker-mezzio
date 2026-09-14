@@ -24,8 +24,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v7.0.0
-      - uses: shivammathur/setup-php@2.37.1
+      - uses: actions/checkout@v7.0.1
+      - uses: shivammathur/setup-php@2.37.2
 
         with:
           php-version: ${{ env.default_php }}
@@ -38,8 +38,8 @@ jobs:
     name: Check for Unused Dependencies
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
-      - uses: shivammathur/setup-php@2.37.1
+      - uses: actions/checkout@v7.0.1
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.default_php }}
           extensions: ${{ env.php_extensions }}
@@ -51,8 +51,8 @@ jobs:
     name: "Psalm Security Report"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
-      - uses: shivammathur/setup-php@2.37.1
+      - uses: actions/checkout@v7.0.1
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.default_php }}
           extensions: ${{ env.php_extensions }}
@@ -68,8 +68,8 @@ jobs:
     name: Rector on Default PHP
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
-      - uses: shivammathur/setup-php@2.37.1
+      - uses: actions/checkout@v7.0.1
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.default_php }}
           extensions: ${{ env.php_extensions }}
@@ -81,8 +81,8 @@ jobs:
     name: Mutation Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v7.0.0
-      - uses: shivammathur/setup-php@2.37.1
+      - uses: actions/checkout@v7.0.1
+      - uses: shivammathur/setup-php@2.37.2
         with:
           php-version: ${{ env.default_php }}
           extensions: ${{ env.php_extensions }}
